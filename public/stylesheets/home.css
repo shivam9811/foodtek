@@ -1,0 +1,45 @@
+body{
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+    url('./istockphoto-638000936-170667a.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5rem rgba(0,0,0,0.5);
+}
+.cover-container{
+    max-width: 80vw;
+}
+
+.nav-link{
+    padding: 0.25rem 0;
+    font-weight: 700;
+    color:rgba(255,255,255,0.5);
+    margin-left: 1rem;
+    border-bottom: 0.125rem solid transparent;
+}
+
+.nav-link:hover{
+    color: rgba(255,255,255,0.5);
+    border-bottom: 0.125rem solid rgba(255,255,255,0.5);
+}
+
+.nav-link.active{
+    color:white;
+    border-bottom: 0.125rem solid white;
+}
+
+.foodtek{
+    color:white;
+    text-decoration: none;
+}
+
+.foodtek:hover{
+    color: rgb(255, 0, 0);
+}
+
+.btn-secondary, .btn-secondary:hover{
+    color:#333;
+    text-shadow: none;
+}

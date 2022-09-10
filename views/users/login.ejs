@@ -1,0 +1,48 @@
+<% layout('layouts/boilerplate') %> <% title="login" %>
+
+<div class="container d-flex justify-content-center align-center m-auto">
+  <div class="row w-100">
+    <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+      <div class="card shadow">
+        <img
+          src="https://media.istockphoto.com/vectors/register-account-submit-access-login-password-username-internet-vector-id1281150061?k=20&m=1281150061&s=612x612&w=0&h=wpCvmggedXRECWK-FVL98MMllubyevIrXuUu50fdCqE="
+          alt="login"
+          crossorigin="anonymous"
+          class="card-img-top h-50 w-50 m-auto"
+        />
+        <div class="card-body">
+          <form action="/login" method="post" class="validated-form" novalidate>
+            <div class="mb-3">
+              <label class="form-label" for="username">Username</label>
+              <input
+                class="form-control"
+                type="text"
+                id="username"
+                name="username"
+                required
+                autofocus
+              />
+              <div class="valid-feedback">Looks Good!!</div>
+              <div class="invalid-feedback">Username is required</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="password">Password</label>
+              <input
+                class="form-control"
+                type="password"
+                id="password"
+                name="password"
+                required
+              />
+              <div class="valid-feedback">Looks Good!!</div>
+              <div class="invalid-feedback">Password is required</div>
+            </div>
+            <div class="d-grid gap-2">
+              <button class="btn btn-success">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+<% layout('layouts/boilerplate') %> <% title='Edit Restaurant' %>
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2 col-xl-6 offset-xl-3 card shadow mt-3">
+    <h1 class="text-center">Edit Restaurant</h1>
+    <div class="card-body">
+      <form
+        action="/restaurants/<%=restaurant._id%>?_method=put"
+        method="post"
+        class="validated-form"
+        novalidate
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <label class="form-label" for="name">Name</label>
+          <input
+            class="form-control"
+            type="text"
+            id="name"
+            name="restaurant[name]"
+            value="<%= restaurant.name%> "
+            required
+          />
+          <div class="valid-feedback">Looks Good!!</div>
+          <div class="invalid-feedback">Name is required</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="location">Location</label>
+          <input
+            class="form-control"
+            type="text"
+            id="location"
+            name="restaurant[location]"
+            value="<%= restaurant.location%>"
+            required
+          />
+          <div class="valid-feedback">Looks Good!!</div>
+          <div class="invalid-feedback">Location is required</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="description">Description</label>
+          <textarea
+            class="form-control"
+            type="text"
+            id="description"
+            name="restaurant[description]"
+            required
+          >
+<%= restaurant.description%></textarea
+          >
+          <div class="valid-feedback">Looks Good!!</div>
+          <div class="invalid-feedback">Description is required</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="price">Price</label>
+          <i class="fa fa-question-circle-o price"></i>
+          <div class="price-info">Average Price For Two Customer</div>
+          <input
+            class="form-control"
+            type="text"
+            id="price"
+            name="restaurant[price]"
+            value="<%= restaurant.price%>"
+            required
+          />
+          <div class="valid-feedback">Looks Good!!</div>
+          <div class="invalid-feedback">Price is required</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="image">Add more images</label>
+          <input
+            type="file"
+            class="form-control"
+            name="image"
+            id="image"
+            multiple
+          />
+          <div class="valid-feedback">Looks Good!!</div>
+          <div class="invalid-feedback">Image is required</div>
+        </div>
+        <div class="mb-3 row">
+          <% restaurant.images.forEach(function(img,i){ %>
+          <div class="col-3">
+            <img src="<%= img.thumbnail%> " class="img-thumbnail" alt="" />
+            <div class="input-group-text mt-2">
+              <input
+                class="form-check-input mt-0"
+                id="image-<%=i  %> "
+                type="checkbox"
+                value="<%= img.filename  %>"
+                name="deleteImages[]"
+              />
+              <label class="ms-1" for="image-<%=i%> "> delete</label>
+            </div>
+          </div>
+          <% } )%>
+        </div>
+        <div class="d-grid gap-2">
+          <button class="btn btn-success">Update Restaurant</button>
+          <a class="btn btn-danger" href="/restaurants/<%=restaurant._id %> "
+            >Back to Restaurant</a
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

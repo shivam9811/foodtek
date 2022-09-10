@@ -1,0 +1,60 @@
+<script
+  src="https://apis.mappls.com/advancedmaps/v1/c4937515e80c225c92941be351f2db85/map_load?v=1.5&plugin=cluster"
+  mode="cors"
+  crossorigin="anonymous"
+></script>
+
+<style>
+  #map {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 400px;
+  }
+</style>
+
+<div id="map"></div>
+<script>
+  const geo = "<%-geoLocation%>";
+  const zoom = "<%- zoom  %> ";
+  const names = "<%- names%> ";
+</script>
+<script>
+  const geoLocation = geo.split(",");
+  const namesArray = names.split(",");
+  let markers = [];
+  var map = new MapmyIndia.Map("map", {
+    center: geoLocation.length > 2 ? [22.5937, 76.9629] : geoLocation,
+    hybrid: true,
+    search: true,
+    location: true,
+    zoom: zoom,
+    crossOriginIsolated: true,
+  });
+  markerClusters = L.markerClusterGroup({
+    chunkedLoading: true,
+    maxClusterRadius: 50,
+    disableClusteringAtZoom: 20,
+    singleMarkerMode: false,
+    addRegionToolTips: false,
+  });
+  for (let i = 0; i < geoLocation.length; i = i + 2) {
+    let mk1 = L.marker(
+      geoLocation.length < 3
+        ? geoLocation
+        : [geoLocation[i], geoLocation[i + 1]]
+    );
+    if (i % 2 === 0) {
+      if (geoLocation.length > 2) {
+        mk1.bindPopup(`<div><h6>${namesArray[i]}<h6>
+        <a target="_blank" href="/restaurants/${namesArray[i + 1]}"
+        >Go to Restaurant</a></div>`);
+      } else {
+        mk1.bindPopup(`<div><h3>${namesArray[i]}<h3></div>`);
+      }
+    }
+    markers.push(mk1);
+  }
+  markerClusters.addLayers(markers);
+  map.addLayer(markerClusters);
+</script>

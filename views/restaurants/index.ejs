@@ -1,0 +1,32 @@
+<% layout('layouts/boilerplate') %> <% title='Restaurants' %>
+<div class="card mb-3">
+  <%-include('../partials/map',{geoLocation:geoLocations,zoom:4,names:names})%>
+</div>
+<% for(let restaurant of restaurants){ %>
+<div class="card mb-3">
+  <div class="row">
+    <div class="col-md-4">
+      <img
+        src="<%= restaurant.images[Math.floor(Math.random() * restaurant.images.length)].url%>"
+        alt="<%= restaurant.name %>"
+        crossorigin="anonymous"
+        class="img-fluid w-100 h-100"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%=restaurant.name%></h5>
+        <p class="card-text"><%=restaurant.description %></p>
+        <p class="card-text">
+          <small class="text-muted"><%= restaurant.location%> </small>
+        </p>
+        <a href="/restaurants/<%=restaurant._id%>" class="btn btn-primary"
+          >View <%=restaurant.name%>
+        </a>
+        <h6 class="card-text">&#8377; <%=restaurant.price%> For Two</h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% } %>
