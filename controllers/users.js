@@ -1,8 +1,10 @@
 const User = require("../models/userModel");
+// importing user model
 
 module.exports.renderRegisterForm = (req, res) => {
   res.render("users/register");
 };
+//controller used for rendering Register form
 
 module.exports.registerUser = async (req, res, next) => {
   try {
@@ -21,10 +23,12 @@ module.exports.registerUser = async (req, res, next) => {
     res.redirect("/register");
   }
 };
+//controller used for registering user
 
 module.exports.renderLoginForm = (req, res) => {
   res.render("users/login");
 };
+//controller used for rendering login form
 
 module.exports.loginUser = (req, res) => {
   const { username } = req.user;
@@ -33,6 +37,7 @@ module.exports.loginUser = (req, res) => {
   req.flash("success", `Welcome Back ${username}`);
   res.redirect(redirectUrl);
 };
+//controller used for logged in user
 
 module.exports.logoutUser = (req, res, next) => {
   req.logout((err) => {
@@ -43,3 +48,4 @@ module.exports.logoutUser = (req, res, next) => {
     res.redirect("/restaurants");
   });
 };
+//controller used for logged out

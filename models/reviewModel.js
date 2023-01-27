@@ -16,6 +16,10 @@ const reviewSchema = new Schema({
   },
 });
 
+// defing the schema for review
+
 const Review = mongoose.model("Review", reviewSchema);
+// creating the review model
 
 module.exports = Review;
+//exporting review model

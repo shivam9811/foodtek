@@ -10,6 +10,7 @@ const ImageSchema = new Schema({
     type: String,
   },
 });
+//creating ImageSchema
 
 ImageSchema.virtual("thumbnail").get(function () {
   return this.url.replace("/upload", "/upload/c_thumb,w_200,h_200");
@@ -43,6 +44,7 @@ const RestaurantSchema = new Schema({
     ref: "User",
   },
 });
+//creating restaurantSchema
 
 RestaurantSchema.post("findOneAndDelete", async (doc) => {
   if (doc) {
@@ -55,5 +57,7 @@ RestaurantSchema.post("findOneAndDelete", async (doc) => {
 });
 
 const Restaurant = mongoose.model("Restaurant", RestaurantSchema);
+//creating a Restaurant model
 
 module.exports = Restaurant;
+// exports restaurants model

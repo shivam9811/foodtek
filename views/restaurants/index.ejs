@@ -1,6 +1,7 @@
 <% layout('layouts/boilerplate') %> <% title='Restaurants' %>
 <div class="card mb-3">
   <%-include('../partials/map',{geoLocation:geoLocations,zoom:4,names:names})%>
+  <!--including map on the restaurant page-->
 </div>
 <% for(let restaurant of restaurants){ %>
 <div class="card mb-3">
@@ -30,3 +31,5 @@
 </div>
 
 <% } %>
+
+<!-- for of loop to show the list of restaurants-->

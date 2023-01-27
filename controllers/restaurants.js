@@ -16,10 +16,12 @@ module.exports.index = async (req, res) => {
   }
   res.render("restaurants/index", { restaurants, names, geoLocations });
 };
+//controller to show a list of restaurants
 
 module.exports.renderNewForm = (req, res) => {
   res.render("restaurants/new");
 };
+//controller to render a form for new restaurant
 
 module.exports.createNewRestaurant = async (req, res, next) => {
   const restaurant = new Restaurant(req.body.restaurant);
@@ -34,6 +36,7 @@ module.exports.createNewRestaurant = async (req, res, next) => {
   req.flash("success", "Successfully made a new restaurant");
   res.redirect(`/restaurants/${restaurant._id}`);
 };
+//controller to create a new restaurant
 
 module.exports.findRestaurantById = async (req, res, next) => {
   const { id } = req.params;
@@ -52,6 +55,7 @@ module.exports.findRestaurantById = async (req, res, next) => {
   }
   res.render("restaurants/show", { restaurant });
 };
+//controller to find a restaurant by id
 
 module.exports.renderEditForm = async (req, res, next) => {
   const { id } = req.params;
@@ -62,6 +66,7 @@ module.exports.renderEditForm = async (req, res, next) => {
   }
   res.render("restaurants/edit", { restaurant });
 };
+//controller to render an edit form
 
 module.exports.updateRestaurant = async (req, res, next) => {
   const { id } = req.params;
@@ -91,6 +96,8 @@ module.exports.updateRestaurant = async (req, res, next) => {
   res.redirect(`/restaurants/${restaurant.id}`);
 };
 
+// controller to update the restaurant details
+
 module.exports.deleteRestaurant = async (req, res) => {
   const { id } = req.params;
 
@@ -99,3 +106,4 @@ module.exports.deleteRestaurant = async (req, res) => {
   req.flash("success", "Successfully deleted restaurant");
   res.redirect("/restaurants");
 };
+// controller to delete the restaurants

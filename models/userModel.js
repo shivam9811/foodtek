@@ -9,9 +9,11 @@ const userSchema = new Schema({
     unique: true,
   },
 });
+// creating user schema
 
 userSchema.plugin(passportLocalMongoose);
 
 const User = mongoose.model("User", userSchema);
+// creating user model
 
 module.exports = User;
