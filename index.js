@@ -1,17 +1,28 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const session = require("express-session"); // session package is used to make session in express
-const MongoStore = require("connect-mongo"); //connect-mongo package is used to store session in the mongodb
+const session = require("express-session");
+// session package is used to make session in express
 
-const flash = require("connect-flash"); //connect-flash package is use to store message(like successfully or login)
-const path = require("path"); //path module is required to setting the view directory
+const MongoStore = require("connect-mongo");
+//connect-mongo package is used to store session in the mongodb
+
+const flash = require("connect-flash");
+//connect-flash package is use to store message(like successfully or login)
+
+const path = require("path");
+//path module is required to setting the view directory
+
 const methodOverride = require("method-override");
+// package use to put and patch in client where put and patch doesnot supported for example(forms)
+
 const ejsMate = require("ejs-mate"); //ejs-mate is the ejs engine
 const ExpressError = require("./utils/ExpressError");
-const passport = require("passport"); // passport is a module used to perform authentication
+const passport = require("passport");
+// passport is a module used to perform authentication
 const LocalStrategy = require("passport-local"); //package used by passport
 const monogoSanitize = require("express-mongo-sanitize");
-const helmet = require("helmet"); //Helmet helps you secure your Express apps by setting various HTTP headers
+const helmet = require("helmet");
+//Helmet helps you secure your Express apps by setting various HTTP headers
 
 const User = require("./models/userModel");
 
