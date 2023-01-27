@@ -31,7 +31,7 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item text-muted"><%= restaurant.location %></li>
         <li class="list-group-item"> Registered By: <%= restaurant.author.username.toUpperCase()  %> </li>
-        <li class="list-group-item">&#8377; <%= restaurant.price %> For Two</li>
+        <li class="list-group-item">&#8377; <%= restaurant.price %> For Two Person</li>
       </ul>
       <% if(currentUser&&restaurant.author.equals(currentUser._id)){  %> 
       <div class="card-body">
