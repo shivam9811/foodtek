@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const dotenv = require("dotenv").config();
 // session package is used to make session in express
 
 const MongoStore = require("connect-mongo");
@@ -32,10 +33,7 @@ const review = require("./routes/review");
 const Restaurant = require("./models/restaurantModel");
 
 const app = express();
-const dbUrl =
-  process.env.NODE_ENV === "production"
-    ? process.env.DB_URL
-    : "mongodb://localhost:27017/foodtek"; // database url
+const dbUrl = process.env.DB_URL;
 mongoose
   .connect(dbUrl)
   .then(() => {
@@ -135,7 +133,7 @@ app.use((err, req, res, next) => {
 });
 // getting error and than to render error
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`app is listening on port ${port}`);
 });
