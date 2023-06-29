@@ -32,7 +32,10 @@ const review = require("./routes/review");
 const Restaurant = require("./models/restaurantModel");
 
 const app = express();
-const dbUrl = "mongodb://localhost:27017/foodtek"; // database url
+const dbUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.DB_URL
+    : "mongodb://localhost:27017/foodtek"; // database url
 mongoose
   .connect(dbUrl)
   .then(() => {
